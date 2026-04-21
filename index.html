@@ -1,0 +1,1312 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ПолСтеныч — полусухая стяжка пола в СПб и ЛО. Мастер Никита, с 2015</title>
+<meta name="description" content="Механизированная полусухая стяжка пола в Санкт-Петербурге и Ленобласти. Мастер Никита, 9 лет опыта, бригада 4 человека. Евроцемент М-500 и фиброволокно. Фикс цена в договоре. Звоните: +7 938 808 72 66">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='10' fill='%2314110e'/><line x1='0' y1='22' x2='64' y2='22' stroke='%23ff6b1a' stroke-width='1.5' opacity='0.5'/><line x1='0' y1='32' x2='64' y2='32' stroke='%23ff8c42' stroke-width='2.5'/><line x1='0' y1='42' x2='64' y2='42' stroke='%23ff6b1a' stroke-width='1.5' opacity='0.5'/><rect x='20' y='18' width='24' height='28' rx='4' fill='%2326201b' stroke='%23ff6b1a' stroke-width='1.5'/><text x='32' y='36' dominant-baseline='middle' text-anchor='middle' font-family='Arial Black,sans-serif' font-weight='900' font-size='18' fill='%23ff6b1a'>Р</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #14110e;
+    --bg2: #141210;
+    --bg3: #1a1714;
+    --accent: #c9a84c;
+    --accent2: #e8c96a;
+    --white: #f5f0e8;
+    --muted: #8a8070;
+    --border: rgba(255,107,26,0.12);
+    --card: rgba(255,107,26,0.04);
+    --font-head: 'Bebas Neue', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+    --font-mono: 'DM Mono', monospace;
+    --r: 12px; --r2: 20px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--font-body); background: var(--bg); color: var(--white); overflow-x: hidden; line-height: 1.6; }
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
+
+  /* NAV */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 6vw; height: 68px; background: rgba(20,17,14,0.92); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); transition: height .3s; }
+  nav.scrolled { height: 58px; }
+  .nav-logo { font-family: var(--font-head); font-size: 1.4rem; letter-spacing: .08em; color: var(--white); text-decoration: none; }
+  .nav-logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { text-decoration: none; color: var(--muted); font-size: .875rem; font-weight: 500; transition: color .2s; }
+  .nav-links a:hover { color: var(--white); }
+  .nav-phone { display: flex; align-items: center; gap: .5rem; text-decoration: none; color: var(--white); font-weight: 600; font-size: .9rem; transition: color .2s; }
+  .nav-phone:hover { color: var(--accent2); }
+  .nav-phone-mobile { display: none; color: var(--accent); padding: .5rem; }
+  .burger { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+  .burger span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; transition: .3s; }
+
+  /* HERO */
+  .hero { min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden; padding: 120px 6vw 80px; }
+  .hero-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; will-change: transform; z-index: 0; }
+  .hero-grid { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,107,26,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,107,26,.04) 1px, transparent 1px); background-size: 60px 60px; mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%); will-change: transform; }
+  .hero-overlay { position: absolute; inset: 0; background: linear-gradient(90deg, rgba(20,17,14,.90) 0%, rgba(20,17,14,.78) 55%, rgba(20,17,14,.25) 100%); }
+  .hero-orb { position: absolute; border-radius: 50%; filter: blur(80px); animation: orbFloat 8s ease-in-out infinite; }
+  .hero-orb-1 { width: 500px; height: 500px; background: rgba(255,107,26,.1); right: -100px; top: 10%; }
+  .hero-orb-2 { width: 300px; height: 300px; background: rgba(255,140,66,.06); right: 30%; bottom: 10%; animation-delay: -3s; }
+  @keyframes orbFloat { 0%,100%{transform:translateY(0) scale(1)} 50%{transform:translateY(-30px) scale(1.05)} }
+
+  .hero-content { position: relative; z-index: 2; max-width: 700px; }
+  .live-counter { display: inline-flex; align-items: center; gap: .5rem; font-size: .8rem; color: var(--muted); margin-bottom: .75rem; }
+  .live-dot { width: 8px; height: 8px; border-radius: 50%; background: #4ade80; animation: livePulse 2s infinite; }
+  @keyframes livePulse { 0%,100%{box-shadow:0 0 0 0 rgba(74,222,128,.4)} 50%{box-shadow:0 0 0 6px rgba(74,222,128,0)} }
+  .hero-badge { display: inline-flex; align-items: center; gap: .5rem; background: rgba(255,107,26,.12); border: 1px solid rgba(255,107,26,.3); padding: .35rem .9rem; border-radius: 100px; font-size: .8rem; font-weight: 500; color: var(--accent2); margin-bottom: 1.25rem; letter-spacing: .04em; }
+  .hero-badge::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.3)} }
+
+  /* GOLD FILL TEXT */
+  .fill-text-wrapper { position: relative; display: block; }
+  .fill-text-bg { color: transparent; -webkit-text-stroke: 1px rgba(255,107,26,.25); display: block; }
+  .fill-text-gold { position: absolute; inset: 0; background: linear-gradient(180deg, #ffc299 0%, #c9a84c 40%, #d54d0a 70%, #c9a84c 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; clip-path: inset(100% 0% 0% 0%); transition: none; display: block; }
+  .fill-text-gold.animate { animation: fillUp 1.8s cubic-bezier(0.22,1,0.36,1) forwards; }
+  @keyframes fillUp { 0%{clip-path:inset(100% 0% 0% 0%)} 100%{clip-path:inset(0% 0% 0% 0%)} }
+
+  .hero h1 { font-family: var(--font-head); font-size: clamp(2.4rem, 5.5vw, 5rem); line-height: 1.05; letter-spacing: .02em; margin-bottom: 1.5rem; text-transform: uppercase; }
+  .hero h1 .accent { color: var(--accent); }
+  .hero h1 .sub { color: var(--muted); font-size: 68%; }
+  .hero-sub { color: var(--muted); font-size: 1.05rem; max-width: 520px; margin-bottom: 1.5rem; line-height: 1.7; }
+  .hero-tag-row { display: flex; flex-wrap: wrap; gap: .6rem; margin-bottom: 2rem; }
+  .hero-tag { display: flex; align-items: center; gap: .4rem; background: rgba(255,255,255,.05); border: 1px solid var(--border); padding: .4rem .8rem; border-radius: 8px; font-size: .8rem; color: var(--muted); }
+  .hero-tag span { color: var(--white); font-weight: 500; }
+  .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+  /* BUTTONS */
+  .btn-primary { display: inline-flex; align-items: center; gap: .6rem; background: var(--accent); color: #14110e; padding: .85rem 2rem; border-radius: var(--r); font-size: 1rem; font-weight: 700; font-family: var(--font-body); text-decoration: none; border: none; cursor: pointer; transition: all .25s; box-shadow: 0 0 30px rgba(255,107,26,.25); position: relative; overflow: hidden; }
+  .btn-primary::after { content: ''; position: absolute; inset: 0; background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,.2) 50%, transparent 60%); transform: translateX(-100%); animation: btnShimmer 3s infinite; }
+  @keyframes btnShimmer { 0%,70%{transform:translateX(-100%)} 85%{transform:translateX(100%)} 100%{transform:translateX(100%)} }
+  .btn-primary:hover { background: var(--accent2); transform: translateY(-2px); box-shadow: 0 8px 40px rgba(255,107,26,.4); }
+  .btn-secondary { display: inline-flex; align-items: center; gap: .6rem; background: transparent; color: var(--white); padding: .85rem 2rem; border-radius: var(--r); font-size: 1rem; font-weight: 500; font-family: var(--font-body); text-decoration: none; border: 1px solid var(--border); cursor: pointer; transition: all .25s; }
+  .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* RIPPLE */
+  .ripple { position: absolute; border-radius: 50%; transform: scale(0); background: radial-gradient(circle, rgba(255,255,255,.6) 0%, rgba(255,107,26,.3) 50%, transparent 70%); pointer-events: none; animation: rippleOut .8s cubic-bezier(0.22,1,0.36,1) forwards; }
+  @keyframes rippleOut { 0%{transform:scale(0);opacity:1} 60%{opacity:.6} 100%{transform:scale(4);opacity:0} }
+
+  .hero-stats { display: flex; gap: 3rem; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--border); flex-wrap: wrap; }
+  .hero-stat-num { font-family: var(--font-head); font-size: 2.8rem; color: var(--accent); line-height: 1; }
+  .hero-stat-label { font-size: .8rem; color: var(--muted); margin-top: .2rem; }
+
+  /* SECTIONS */
+  section { padding: 100px 6vw; }
+  .section-tag { font-family: var(--font-mono); font-size: .75rem; color: var(--accent); letter-spacing: .12em; text-transform: uppercase; margin-bottom: .75rem; display: flex; align-items: center; gap: .5rem; }
+  .section-tag::before { content: '//'; color: var(--muted); }
+  .section-title { font-family: var(--font-head); font-size: clamp(2.2rem, 5vw, 3.8rem); line-height: 1.05; letter-spacing: .03em; text-transform: uppercase; margin-bottom: .75rem; }
+  .section-sub { color: var(--muted); font-size: 1rem; max-width: 520px; }
+
+  /* REVEAL */
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity .6s ease, transform .6s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1{transition-delay:.1s} .reveal-delay-2{transition-delay:.2s} .reveal-delay-3{transition-delay:.3s} .reveal-delay-4{transition-delay:.4s}
+
+  /* TRUST BAR */
+  #trust { background: var(--bg); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .trust-inner { padding: 1.75rem 6vw; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: nowrap; }
+  .trust-item { display: flex; align-items: center; gap: .6rem; flex-shrink: 0; }
+  .trust-icon { font-size: 1.5rem; }
+  .trust-label { font-size: .8rem; color: var(--muted); line-height: 1.4; white-space: nowrap; }
+  .trust-label strong { color: var(--white); display: block; }
+  .trust-divider { width: 1px; height: 32px; background: var(--border); flex-shrink: 0; }
+
+  /* BENEFITS */
+  #benefits { background: var(--bg2); }
+  .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+  .benefit-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--r2); padding: 2rem; transition: all .3s; position: relative; overflow: hidden; }
+  .benefit-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--accent), transparent); opacity: 0; transition: opacity .3s; }
+  .benefit-card:hover { border-color: rgba(255,107,26,.35); transform: translateY(-4px); box-shadow: 0 20px 60px rgba(0,0,0,.3); }
+  .benefit-card:hover::before { opacity: 1; }
+  .benefit-icon { width: 52px; height: 52px; border-radius: 14px; background: rgba(255,107,26,.12); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 1.25rem; transition: all .3s; }
+  .benefit-card:hover .benefit-icon { background: rgba(255,107,26,.25); transform: scale(1.1) rotate(-5deg); }
+  .benefit-num { font-family: var(--font-head); font-size: 3rem; color: var(--accent); line-height: 1; margin-bottom: .25rem; }
+  .benefit-title { font-weight: 600; font-size: 1rem; margin-bottom: .4rem; }
+  .benefit-desc { color: var(--muted); font-size: .875rem; line-height: 1.6; }
+
+  /* HOW IT WORKS */
+  .steps-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 3rem; position: relative; }
+  .steps-grid::before { content: ''; position: absolute; top: 3.5rem; left: calc(200px/2); right: calc(200px/2); height: 1px; background: linear-gradient(90deg, transparent, var(--accent), transparent); opacity: .3; pointer-events: none; }
+  .step-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--r2); padding: 2rem; transition: all .3s; }
+  .step-card:hover { border-color: rgba(255,107,26,.25); transform: translateY(-3px); }
+  .steps-grid .step-card:nth-child(1){transition-delay:.0s} .steps-grid .step-card:nth-child(2){transition-delay:.08s} .steps-grid .step-card:nth-child(3){transition-delay:.16s} .steps-grid .step-card:nth-child(4){transition-delay:.24s} .steps-grid .step-card:nth-child(5){transition-delay:.32s}
+  .step-num { font-family: var(--font-head); font-size: 4rem; color: rgba(255,107,26,.2); line-height: 1; margin-bottom: .75rem; }
+  .step-title { font-weight: 600; font-size: .95rem; margin-bottom: .4rem; }
+  .step-desc { color: var(--muted); font-size: .85rem; line-height: 1.6; }
+
+  /* CALCULATOR */
+  .calc-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3rem; align-items: start; }
+  .calc-form { background: var(--card); border: 1px solid var(--border); border-radius: var(--r2); padding: 2.5rem; }
+  .form-group { margin-bottom: 1.25rem; }
+  .form-group label { display: block; font-size: .825rem; font-weight: 500; color: var(--muted); margin-bottom: .5rem; letter-spacing: .03em; }
+  .form-control { width: 100%; background: rgba(255,255,255,.05); border: 1px solid var(--border); border-radius: var(--r); padding: .75rem 1rem; color: var(--white); font-family: var(--font-body); font-size: .95rem; transition: border-color .2s, box-shadow .2s; appearance: none; }
+  .form-control:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(255,107,26,.12); }
+  .form-control option { background: var(--bg3); color: var(--white); }
+
+  /* AREA PRESETS */
+  .area-presets { display: flex; gap: .5rem; margin-bottom: 1rem; }
+  .preset-btn { flex: 1; background: rgba(255,255,255,.04); border: 1px solid var(--border); border-radius: 10px; padding: .6rem .4rem; cursor: pointer; color: var(--muted); font-size: .72rem; text-align: center; line-height: 1.4; transition: all .2s; font-family: var(--font-body); }
+  .preset-btn span { display: block; color: var(--accent); font-weight: 600; font-size: .78rem; }
+  .preset-btn:hover, .preset-btn.active { border-color: var(--accent); color: var(--white); background: rgba(255,107,26,.08); }
+
+  /* RANGE SLIDER */
+  .area-range { width: 100%; -webkit-appearance: none; height: 6px; background: linear-gradient(90deg, var(--accent) 15%, rgba(255,255,255,.1) 15%); border-radius: 3px; outline: none; border: none; cursor: pointer; margin-top: .5rem; }
+  .area-range::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; border-radius: 50%; background: var(--accent); border: 3px solid var(--bg); box-shadow: 0 2px 8px rgba(255,107,26,.4); cursor: pointer; }
+  .area-range::-moz-range-thumb { width: 22px; height: 22px; border-radius: 50%; background: var(--accent); border: 3px solid var(--bg); cursor: pointer; }
+  .range-hints { display: flex; justify-content: space-between; font-size: .7rem; color: var(--muted); margin-top: .3rem; }
+
+  /* RADIO GROUP */
+  .radio-group { display: flex; gap: .75rem; flex-wrap: wrap; }
+  .radio-btn { flex: 1; min-width: 80px; text-align: center; background: rgba(255,255,255,.04); border: 1px solid var(--border); border-radius: var(--r); padding: .6rem .5rem; cursor: pointer; font-size: .85rem; color: var(--muted); transition: all .2s; user-select: none; }
+  .radio-btn:hover { border-color: rgba(255,107,26,.35); color: var(--white); }
+  .radio-btn.active { background: rgba(255,107,26,.12); border-color: var(--accent); color: var(--white); font-weight: 600; }
+
+  /* CALC RESULT */
+  .calc-result { background: linear-gradient(135deg, rgba(255,107,26,.1) 0%, rgba(255,107,26,.03) 100%); border: 1px solid rgba(255,107,26,.2); border-radius: var(--r2); padding: 2.5rem; }
+  .calc-result-empty { text-align: center; color: var(--muted); padding: 3rem 1rem; }
+  .calc-result-empty .big-icon { font-size: 3.5rem; margin-bottom: 1rem; opacity: .4; }
+  .result-data { display: none; flex-direction: column; gap: 1.5rem; }
+  .calc-result.has-result .calc-result-empty { display: none; }
+  .calc-result.has-result .result-data { display: flex; }
+  .result-item label { font-size: .75rem; font-family: var(--font-mono); color: var(--accent2); letter-spacing: .08em; text-transform: uppercase; display: block; margin-bottom: .35rem; }
+  .result-price { font-family: var(--font-head); font-size: 3rem; color: var(--white); letter-spacing: .02em; line-height: 1; transition: transform .15s ease, opacity .15s ease; }
+  .result-price .rub { font-size: 2rem; color: var(--accent); }
+  .result-sub { font-size: .85rem; color: var(--muted); margin-top: .25rem; }
+  .result-breakdown { font-size: .85rem; color: var(--muted); background: rgba(255,255,255,.03); border-radius: 8px; padding: .75rem 1rem; border-left: 2px solid var(--accent); display: flex; flex-direction: column; gap: .3rem; }
+  .result-confidence { margin-top: .5rem; }
+  .confidence-label { font-size: .72rem; color: var(--muted); margin-bottom: .4rem; }
+  .confidence-bar { height: 4px; background: rgba(255,255,255,.08); border-radius: 2px; overflow: hidden; }
+  .confidence-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--accent), var(--accent2)); border-radius: 2px; transition: width .8s cubic-bezier(0.22,1,0.36,1); }
+  .confidence-note { font-size: .7rem; color: var(--muted); margin-top: .3rem; font-style: italic; }
+
+  /* PORTFOLIO */
+  #portfolio { background: var(--bg2); }
+  .portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+  .portfolio-card { border-radius: var(--r2); overflow: hidden; aspect-ratio: 4/3; position: relative; cursor: pointer; transition: transform .3s, box-shadow .3s; }
+  .portfolio-card:hover { transform: scale(1.02); box-shadow: 0 20px 60px rgba(0,0,0,.5); }
+  .portfolio-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .4s ease; }
+  .portfolio-card:hover img { transform: scale(1.06); }
+  .portfolio-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,.75) 0%, transparent 60%); padding: 1.5rem; display: flex; flex-direction: column; justify-content: flex-end; }
+  .portfolio-tag { font-size: .7rem; font-family: var(--font-mono); color: var(--accent2); margin-bottom: .4rem; letter-spacing: .08em; }
+  .portfolio-title { font-weight: 600; font-size: .95rem; }
+  .portfolio-area { font-size: .8rem; color: var(--muted); }
+
+  /* ABOUT MASTER */
+  .about-wrap { display: grid; grid-template-columns: 400px 1fr; gap: 4rem; align-items: start; margin-top: 3rem; }
+  .about-photo-wrap { position: relative; }
+  .about-photo { width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: top; border-radius: 16px; display: block; }
+  .about-photo-badge { position: absolute; bottom: 1.5rem; left: 1.5rem; right: 1.5rem; background: rgba(20,17,14,.85); backdrop-filter: blur(12px); border: 1px solid var(--border); border-radius: 12px; padding: 1rem 1.25rem; }
+  .about-photo-badge .name { font-family: var(--font-head); font-size: 1.3rem; letter-spacing: .06em; color: var(--white); }
+  .about-photo-badge .role { font-size: .8rem; color: var(--accent2); margin-top: .2rem; }
+  .about-content { display: flex; flex-direction: column; gap: 1.5rem; }
+  .about-lead { font-size: 1.15rem; line-height: 1.75; color: var(--white); }
+  .about-lead strong { color: var(--accent2); }
+  .about-case { background: var(--card); border: 1px solid var(--border); border-radius: 14px; padding: 1.5rem; }
+  .about-case-tag { font-size: .72rem; font-family: var(--font-mono); color: var(--accent); letter-spacing: .1em; margin-bottom: .75rem; }
+  .about-case-text { font-size: .95rem; color: var(--muted); line-height: 1.75; }
+  .about-case-text span { color: var(--white); font-weight: 500; }
+  .about-team { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
+  .about-team-item { background: rgba(255,255,255,.03); border: 1px solid var(--border); border-radius: 10px; padding: .75rem 1rem; font-size: .82rem; color: var(--muted); }
+  .about-team-item strong { display: block; color: var(--white); font-size: .88rem; margin-bottom: .15rem; }
+  .about-consult { display: flex; align-items: center; gap: 1rem; background: linear-gradient(135deg, rgba(255,107,26,.1), rgba(255,107,26,.05)); border: 1px solid rgba(255,107,26,.25); border-radius: 14px; padding: 1.25rem 1.5rem; }
+  .about-consult-icon { font-size: 2rem; flex-shrink: 0; }
+  .about-consult-text strong { display: block; font-size: 1rem; color: var(--white); margin-bottom: .2rem; }
+  .about-consult-text span { font-size: .85rem; color: var(--muted); }
+  @media(max-width:900px) { .about-wrap { grid-template-columns: 1fr; gap: 2rem; } .about-photo { aspect-ratio: 1/1; } }
+  @media(max-width:480px) { .about-team { grid-template-columns: 1fr; } }
+
+  /* REVIEWS CAROUSEL */
+  .reviews-carousel { position: relative; margin-top: 3rem; }
+  .reviews-row { display: flex; gap: 1.5rem; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; padding: .5rem .25rem 1rem; scrollbar-width: none; -ms-overflow-style: none; }
+  .reviews-row::-webkit-scrollbar { display: none; }
+  .reviews-row .review-card { flex: 0 0 auto; width: min(380px, 85vw); scroll-snap-align: start; }
+  .reviews-carousel::before, .reviews-carousel::after { content: ''; position: absolute; top: 0; bottom: 0; width: 80px; z-index: 2; pointer-events: none; }
+  .reviews-carousel::before { left: 0; background: linear-gradient(90deg, var(--bg2) 0%, transparent 100%); }
+  .reviews-carousel::after { right: 0; background: linear-gradient(-90deg, var(--bg2) 0%, transparent 100%); }
+  .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); width: 52px; height: 52px; border-radius: 50%; background: var(--accent); border: none; cursor: pointer; z-index: 3; display: flex; align-items: center; justify-content: center; color: var(--bg); transition: background .25s, transform .25s, box-shadow .25s; box-shadow: 0 6px 24px rgba(255,107,26,.4); }
+  .carousel-btn:hover { background: var(--accent2); transform: translateY(-50%) scale(1.08); box-shadow: 0 10px 34px rgba(255,107,26,.6); }
+  .carousel-btn:active { transform: translateY(-50%) scale(.96); }
+  .carousel-btn:disabled { opacity: .35; cursor: not-allowed; transform: translateY(-50%) scale(1); box-shadow: 0 2px 8px rgba(0,0,0,.3); }
+  .carousel-prev { left: -18px; }
+  .carousel-next { right: -18px; }
+  .carousel-btn svg { width: 22px; height: 22px; }
+  @media (max-width: 600px) { .carousel-btn { display: none; } .reviews-carousel::before, .reviews-carousel::after { width: 30px; } }
+
+  /* REVIEWS (legacy card styles) */
+  .review-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--r2); padding: 2rem; transition: all .3s; }
+  .review-card:hover { border-color: rgba(255,107,26,.25); transform: translateY(-3px); }
+  .review-quote { font-size: 3rem; color: var(--accent); line-height: 1; font-family: Georgia, serif; margin-bottom: .5rem; opacity: .5; }
+  .review-text { color: var(--muted); font-size: .925rem; line-height: 1.7; margin-bottom: 1.5rem; }
+  .review-footer { display: flex; align-items: center; gap: 1rem; }
+  .review-avatar { width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--accent2)); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .9rem; color: #14110e; }
+  .review-name { font-weight: 600; font-size: .9rem; }
+  .review-stars { color: #ffd43b; font-size: .8rem; }
+  .review-date { font-size: .75rem; color: var(--muted); }
+
+  /* CONTACTS */
+  .contacts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 3rem; }
+  .contact-info { display: flex; flex-direction: column; gap: 1.25rem; }
+  .contact-item { display: flex; align-items: flex-start; gap: 1rem; background: var(--card); border: 1px solid var(--border); border-radius: var(--r); padding: 1.25rem 1.5rem; transition: border-color .3s; }
+  .contact-item:hover { border-color: rgba(255,107,26,.25); }
+  .contact-item-icon { width: 40px; height: 40px; border-radius: 10px; background: rgba(255,107,26,.12); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; }
+  .contact-item-label { font-size: .75rem; color: var(--muted); margin-bottom: .2rem; }
+  .contact-item-value { font-weight: 600; font-size: .95rem; }
+  .contact-item-value a { color: inherit; text-decoration: none; }
+  .contact-form { background: var(--card); border: 1px solid var(--border); border-radius: var(--r2); padding: 2.5rem; }
+  .contact-form h3 { font-family: var(--font-head); font-size: 1.5rem; letter-spacing: .05em; margin-bottom: 1.5rem; }
+
+  /* FOOTER */
+  footer { background: var(--bg); border-top: 1px solid var(--border); padding: 2.5rem 6vw; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+  .footer-logo { font-family: var(--font-head); font-size: 1.2rem; letter-spacing: .08em; color: var(--white); text-decoration: none; }
+  .footer-logo span { color: var(--accent); }
+  .footer-copy { font-size: .8rem; color: var(--muted); }
+  .footer-phone { font-size: .9rem; font-weight: 600; color: var(--white); text-decoration: none; }
+  .footer-phone:hover { color: var(--accent2); }
+
+  /* FOMO TOAST */
+  .order-toast { position: fixed; bottom: 2rem; left: 2rem; z-index: 997; background: var(--bg3); border: 1px solid rgba(255,107,26,.25); border-radius: 14px; padding: 1rem 1.25rem; display: flex; align-items: center; gap: .75rem; box-shadow: 0 8px 40px rgba(0,0,0,.5); transform: translateX(-120%); transition: transform .4s cubic-bezier(.4,0,.2,1); max-width: 270px; }
+  .order-toast.show { transform: translateX(0); }
+  .toast-avatar { width: 36px; height: 36px; border-radius: 50%; flex-shrink: 0; background: linear-gradient(135deg, var(--accent), var(--accent2)); display: flex; align-items: center; justify-content: center; font-size: .75rem; font-weight: 700; color: #14110e; }
+  .toast-title { font-size: .85rem; font-weight: 600; }
+  .toast-text { font-size: .75rem; color: var(--muted); }
+  .toast-close { margin-left: auto; background: none; border: none; color: var(--muted); cursor: pointer; font-size: .9rem; padding: .25rem; flex-shrink: 0; }
+
+  /* STICKY CTA MOBILE */
+  .sticky-cta { display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 200; padding: .75rem 1rem; background: rgba(20,17,14,.96); backdrop-filter: blur(20px); border-top: 1px solid var(--border); gap: .75rem; padding-bottom: calc(.75rem + env(safe-area-inset-bottom)); opacity: 0; pointer-events: none; transition: opacity .3s; }
+  .sticky-cta.visible { opacity: 1; pointer-events: all; }
+  .sticky-call { flex: 1; display: flex; align-items: center; justify-content: center; gap: .5rem; background: var(--accent); color: #14110e; border-radius: var(--r); padding: .75rem 1rem; font-weight: 700; font-size: .95rem; text-decoration: none; transition: background .2s; }
+  .sticky-call:active { background: var(--accent2); }
+  .sticky-order { flex: 0 0 100px; display: flex; align-items: center; justify-content: center; background: transparent; border: 1px solid var(--border); color: var(--white); border-radius: var(--r); padding: .75rem; font-weight: 500; font-size: .9rem; text-decoration: none; transition: border-color .2s; }
+  .sticky-order:active { border-color: var(--accent); }
+
+  /* LASER BEAM */
+  #laser-beam { position: fixed; top: -4px; left: 0; width: 100%; height: 2px; pointer-events: none; z-index: 9999; background: linear-gradient(90deg, transparent 0%, rgba(255,107,26,.05) 5%, rgba(255,107,26,.6) 20%, rgba(240,200,80,.95) 50%, rgba(255,107,26,.6) 80%, rgba(255,107,26,.05) 95%, transparent 100%); box-shadow: 0 0 4px 1px rgba(255,107,26,.4), 0 0 12px 3px rgba(255,107,26,.2), 0 0 30px 6px rgba(255,107,26,.08); opacity: 0; will-change: transform, opacity; }
+  #laser-beam::before, #laser-beam::after { content: ''; position: absolute; top: 50%; transform: translateY(-50%); width: 6px; height: 6px; border-radius: 50%; background: #ffc299; box-shadow: 0 0 8px 2px rgba(255,107,26,.8); }
+  #laser-beam::before { left: 0; } #laser-beam::after { right: 0; }
+  #laser-beam.scanning { animation: laserScan 3.5s cubic-bezier(0.25,.1,.25,1) forwards; }
+  @keyframes laserScan { 0%{opacity:0;transform:translateY(0)} 5%{opacity:1;transform:translateY(0)} 90%{opacity:1;transform:translateY(calc(100vh + 100px))} 100%{opacity:0;transform:translateY(calc(100vh + 100px))} }
+
+  /* CANVAS PARTICLES */
+  #particle-canvas { position: fixed; inset: 0; pointer-events: none; z-index: 9998; }
+
+  /* LASER CURSOR — crosshair like a level */
+  .laser-cursor { position: fixed; inset: 0; pointer-events: none; z-index: 9998; opacity: 0; transition: opacity .25s ease; mix-blend-mode: screen; }
+  .laser-cursor.active { opacity: 1; }
+  .laser-h, .laser-v { position: absolute; will-change: transform; }
+  .laser-h { left: 0; width: 100%; height: 1px; background: linear-gradient(90deg, transparent 0%, rgba(255,107,26,.08) 25%, rgba(255,107,26,.35) 50%, rgba(255,107,26,.08) 75%, transparent 100%); transform: translateY(-50px); }
+  .laser-v { top: 0; width: 1px; height: 100%; background: linear-gradient(180deg, transparent 0%, rgba(255,107,26,.08) 25%, rgba(255,107,26,.35) 50%, rgba(255,107,26,.08) 75%, transparent 100%); transform: translateX(-50px); }
+  .laser-dot { position: absolute; width: 10px; height: 10px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 10px rgba(255,107,26,1), 0 0 24px rgba(255,107,26,.7), 0 0 48px rgba(255,107,26,.35); transform: translate(-50%, -50%); will-change: left, top; transition: width .2s ease, height .2s ease, box-shadow .2s ease; }
+  .laser-cursor.hot .laser-dot { width: 18px; height: 18px; box-shadow: 0 0 16px rgba(255,107,26,1), 0 0 40px rgba(255,107,26,.85), 0 0 72px rgba(255,107,26,.45); }
+  .laser-cursor.hot .laser-h, .laser-cursor.hot .laser-v { filter: brightness(1.4); }
+  @media (hover: none) { .laser-cursor { display: none !important; } }
+
+  /* HERO SCROLL INDICATOR — big pulsing orb */
+  .hero-scroll { position: absolute; bottom: 1.75rem; left: 50%; transform: translateX(-50%); z-index: 3; text-decoration: none; display: flex; flex-direction: column; align-items: center; gap: .9rem; transition: opacity .3s, transform .3s; }
+  .hero-scroll-label { font-family: var(--font-mono); font-size: .7rem; letter-spacing: .22em; color: var(--white); text-transform: uppercase; opacity: .7; }
+  .hero-scroll-orb { position: relative; width: 66px; height: 66px; border-radius: 50%; background: radial-gradient(circle, rgba(255,107,26,.35) 0%, rgba(255,107,26,.12) 55%, rgba(255,107,26,.02) 100%); border: 1.5px solid rgba(255,107,26,.55); display: flex; align-items: center; justify-content: center; backdrop-filter: blur(8px); transition: transform .3s ease, border-color .3s; animation: orbPulseGlow 2.2s ease-in-out infinite; }
+  @keyframes orbPulseGlow {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(255,107,26,.5), 0 0 18px rgba(255,107,26,.35), inset 0 0 15px rgba(255,107,26,.15); }
+    50%      { box-shadow: 0 0 0 12px rgba(255,107,26,0), 0 0 42px rgba(255,107,26,.7), inset 0 0 25px rgba(255,107,26,.3); }
+  }
+  .hero-scroll-orb::before, .hero-scroll-orb::after { content: ''; position: absolute; inset: -4px; border-radius: 50%; border: 1.5px solid var(--accent); opacity: 0; animation: orbRipple 2.4s cubic-bezier(.22,.61,.36,1) infinite; pointer-events: none; }
+  .hero-scroll-orb::after { animation-delay: 1.2s; }
+  @keyframes orbRipple {
+    0%   { transform: scale(.85); opacity: .75; }
+    80%  { opacity: 0; }
+    100% { transform: scale(1.85); opacity: 0; }
+  }
+  .hero-scroll-chevrons { display: flex; flex-direction: column; gap: 1px; align-items: center; margin-top: -2px; }
+  .hero-scroll-chevrons svg { width: 22px; height: 8px; color: var(--accent); filter: drop-shadow(0 0 4px rgba(255,107,26,.8)); animation: chevCascade 1.8s ease-in-out infinite; }
+  .hero-scroll-chevrons svg:nth-child(1) { animation-delay: 0s; }
+  .hero-scroll-chevrons svg:nth-child(2) { animation-delay: .18s; }
+  .hero-scroll-chevrons svg:nth-child(3) { animation-delay: .36s; }
+  @keyframes chevCascade {
+    0%, 100% { opacity: 0; transform: translateY(-4px); }
+    50%      { opacity: 1; transform: translateY(3px); }
+  }
+  .hero-scroll:hover .hero-scroll-orb { transform: scale(1.12); border-color: var(--accent2); }
+  .hero-scroll:hover .hero-scroll-label { opacity: 1; color: var(--accent2); }
+  .hero-scroll.fade-out { opacity: 0; pointer-events: none; transform: translateX(-50%) translateY(12px); }
+  @media (max-width: 600px) { .hero-scroll { display: none; } }
+
+  /* TECHNOLOGY HIGHLIGHT BOX */
+  .tech-highlight { margin-top: 2rem; padding: 1.5rem 2rem; background: var(--card); border: 1px solid var(--border); border-radius: var(--r); border-left: 3px solid var(--accent); }
+  .tech-highlight strong { color: var(--accent2); }
+  .tech-highlight span { color: var(--muted); }
+
+  /* INCLUDED (what's in price) */
+  .included-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.25rem; margin-top: 3rem; }
+  .included-item { display: flex; gap: 1rem; align-items: flex-start; background: var(--card); border: 1px solid var(--border); border-radius: var(--r); padding: 1.5rem; transition: all .3s; }
+  .included-item:hover { border-color: rgba(255,107,26,.3); transform: translateY(-3px); }
+  .included-check { flex-shrink: 0; width: 36px; height: 36px; border-radius: 50%; background: var(--accent); color: var(--bg); display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 1.1rem; }
+  .included-title { font-weight: 600; font-size: 1rem; margin-bottom: .35rem; }
+  .included-desc { color: var(--muted); font-size: .875rem; line-height: 1.6; }
+
+  /* FAQ */
+  .faq-list { display: flex; flex-direction: column; gap: .75rem; margin-top: 3rem; max-width: 820px; }
+  .faq-item { background: var(--card); border: 1px solid var(--border); border-radius: var(--r); overflow: hidden; transition: border-color .3s; }
+  .faq-item[open] { border-color: rgba(255,107,26,.3); }
+  .faq-item summary { list-style: none; cursor: pointer; padding: 1.25rem 1.5rem; font-weight: 600; font-size: 1rem; color: var(--white); display: flex; align-items: center; justify-content: space-between; gap: 1rem; transition: color .2s; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: '+'; color: var(--accent); font-size: 1.6rem; font-weight: 400; flex-shrink: 0; transition: transform .3s; line-height: 1; }
+  .faq-item[open] summary::after { transform: rotate(45deg); }
+  .faq-item summary:hover { color: var(--accent2); }
+  .faq-answer { padding: 0 1.5rem 1.25rem 1.5rem; color: var(--muted); font-size: .925rem; line-height: 1.7; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .nav-links { display: none; }
+    .nav-links.open { display: flex; flex-direction: column; position: fixed; top: 68px; left: 0; right: 0; background: var(--bg2); padding: 1rem 1.5rem; border-bottom: 1px solid var(--border); gap: .25rem; z-index: 99; }
+    .nav-links.open li a { display: block; padding: .7rem 0; font-size: 1rem; border-bottom: 1px solid var(--border); }
+    .nav-links.open li:last-child a { border-bottom: none; }
+    .burger { display: flex; }
+    .nav-phone { display: none; }
+    .nav-phone-mobile { display: flex; align-items: center; }
+    .calc-wrap { grid-template-columns: 1fr; }
+    .contacts-grid { grid-template-columns: 1fr; }
+    .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+    .steps-grid::before { display: none; }
+    .trust-divider { display: none; }
+    .about-wrap { grid-template-columns: 1fr; gap: 2rem; }
+    .about-photo { aspect-ratio: 4/3; max-height: 380px; }
+  }
+  @media (max-width: 768px) {
+    .sticky-cta { display: flex; }
+    body { padding-bottom: 80px; }
+    .chat-bubble { bottom: 5.5rem; right: 1rem; }
+    .chat-panel { bottom: 9rem; right: 1rem; left: 1rem; width: auto; }
+    .social-dock { bottom: 8.5rem; right: 1rem; }
+    .hero-overlay { background: linear-gradient(180deg, rgba(20,17,14,.85) 0%, rgba(20,17,14,.75) 60%, rgba(20,17,14,.7) 100%); }
+  }
+  @media (max-width: 600px) {
+    section { padding: 60px 4vw; }
+    nav { padding: 0 4vw; }
+    .portfolio-grid { grid-template-columns: 1fr; }
+    .reviews-grid { grid-template-columns: 1fr; }
+    .hero-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem 1.5rem; }
+    .hero-stat-num { font-size: 2rem; }
+    .radio-btn { padding: .75rem .5rem; min-height: 44px; }
+    .form-control { font-size: 16px; }
+    footer { flex-direction: column; text-align: center; gap: .75rem; }
+    .order-toast { left: 1rem; right: 1rem; bottom: 5.5rem; max-width: none; }
+    .trust-inner { gap: 1rem; padding: 1.25rem 4vw; flex-wrap: wrap; justify-content: center; }
+    .trust-item { gap: .5rem; }
+    .trust-icon { font-size: 1.3rem; }
+    .trust-label { font-size: .75rem; white-space: normal; }
+    .benefits-grid { grid-template-columns: 1fr; }
+    .steps-grid { grid-template-columns: 1fr; }
+    .about-photo { aspect-ratio: 1/1; max-height: 320px; }
+    .about-team { grid-template-columns: 1fr 1fr; }
+    .hero-tag-row { display: none; }
+    .hero-sub { font-size: .95rem; }
+    .section-title { font-size: clamp(1.8rem, 7vw, 2.8rem); }
+    .calc-form { padding: 1.5rem; }
+    .calc-result { padding: 1.5rem; }
+    .contact-form { padding: 1.5rem; }
+  }
+  @media (max-width: 480px) {
+    .hero { padding: 100px 4vw 60px; }
+    .hero h1 { font-size: clamp(2rem, 9vw, 2.8rem); white-space: normal; line-height: 1.1; }
+    .hero h1 .sub { font-size: 60%; }
+    .area-presets { gap: .35rem; }
+    .preset-btn { font-size: .68rem; padding: .5rem .3rem; }
+    .about-team { grid-template-columns: 1fr; }
+    .social-btn { width: 38px; height: 38px; }
+    .social-btn svg { width: 18px; height: 18px; }
+    .social-dock { gap: .4rem; }
+    .chat-bubble { width: 52px; height: 52px; }
+  }
+
+  /* SOCIAL DOCK */
+  .social-dock { position: fixed; bottom: 7.5rem; right: 2rem; z-index: 998; display: flex; flex-direction: column; gap: .55rem; }
+  .social-btn { width: 44px; height: 44px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: transform .2s, box-shadow .2s; text-decoration: none; }
+  .social-btn svg { width: 22px; height: 22px; fill: #fff; }
+  .social-btn:hover { transform: scale(1.15); }
+  .social-tg  { background: #229ed9; box-shadow: 0 3px 14px rgba(34,158,217,.45); }
+  .social-max { background: transparent; box-shadow: 0 3px 14px rgba(79,70,229,.5); }
+  .social-max svg { width: 44px; height: 44px; }
+  .social-vk  { background: #0077ff; box-shadow: 0 3px 14px rgba(0,119,255,.45); }
+  @media(max-width:768px) { .social-dock { bottom: 9rem; } }
+
+  /* CHAT */
+  .chat-bubble { position: fixed; bottom: 2rem; right: 2rem; z-index: 999; width: 60px; height: 60px; border-radius: 50%; background: var(--accent); box-shadow: 0 4px 30px rgba(255,107,26,.4); display: flex; align-items: center; justify-content: center; cursor: pointer; border: none; transition: transform .2s, box-shadow .2s; animation: chatPulse 3s infinite; }
+  @keyframes chatPulse { 0%,100%{box-shadow:0 4px 30px rgba(255,107,26,.4)} 50%{box-shadow:0 4px 50px rgba(255,107,26,.7)} }
+  .chat-bubble:hover { transform: scale(1.1); }
+  .chat-bubble svg { width: 26px; height: 26px; fill: #14110e; }
+  .chat-bubble .chat-close { display: none; }
+  .chat-bubble.open .chat-icon-svg { display: none; }
+  .chat-bubble.open .chat-close { display: block; }
+  .chat-badge { position: absolute; top: -3px; right: -3px; width: 18px; height: 18px; border-radius: 50%; background: #ff4757; font-size: .65rem; font-weight: 700; display: flex; align-items: center; justify-content: center; border: 2px solid var(--bg); color: white; }
+  .chat-panel { position: fixed; bottom: 5.5rem; right: 2rem; z-index: 998; width: 380px; max-height: 560px; background: var(--bg3); border: 1px solid rgba(255,107,26,.3); border-radius: 20px; box-shadow: 0 20px 60px rgba(0,0,0,.6); display: flex; flex-direction: column; overflow: hidden; transform: scale(.9) translateY(20px); opacity: 0; pointer-events: none; transition: all .25s cubic-bezier(.4,0,.2,1); }
+  .chat-panel.open { transform: scale(1) translateY(0); opacity: 1; pointer-events: all; }
+  .chat-header { padding: 1rem 1.25rem; background: linear-gradient(135deg, rgba(255,107,26,.15), rgba(255,107,26,.03)); border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: .75rem; }
+  .chat-avatar { width: 38px; height: 38px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--accent2)); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; }
+  .chat-header-info h4 { font-size: .9rem; font-weight: 600; }
+  .chat-status { font-size: .72rem; color: #4ade80; display: flex; align-items: center; gap: .3rem; }
+  .chat-status::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: #4ade80; }
+  .chat-messages { flex: 1; overflow-y: auto; padding: 1rem; display: flex; flex-direction: column; gap: .75rem; min-height: 300px; }
+  .chat-messages::-webkit-scrollbar { width: 4px; }
+  .chat-messages::-webkit-scrollbar-thumb { background: rgba(255,107,26,.3); border-radius: 2px; }
+  .chat-msg { max-width: 85%; animation: msgIn .3s ease; }
+  @keyframes msgIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+  .chat-msg.bot { align-self: flex-start; }
+  .chat-msg.user { align-self: flex-end; }
+  .msg-bubble { padding: .65rem .9rem; border-radius: 14px; font-size: .875rem; line-height: 1.5; }
+  .bot .msg-bubble { background: rgba(255,255,255,.07); color: var(--white); border-radius: 4px 14px 14px 14px; }
+  .user .msg-bubble { background: var(--accent); color: #14110e; font-weight: 500; border-radius: 14px 14px 4px 14px; }
+  .msg-time { font-size: .65rem; color: var(--muted); margin-top: .25rem; padding: 0 .25rem; }
+  .bot .msg-time { text-align: left; } .user .msg-time { text-align: right; }
+  .typing-dots { display: flex; gap: 4px; padding: .65rem .9rem; background: rgba(255,255,255,.07); border-radius: 4px 14px 14px 14px; width: fit-content; }
+  .typing-dots span { width: 7px; height: 7px; border-radius: 50%; background: var(--muted); animation: dot 1.2s infinite; }
+  .typing-dots span:nth-child(2){animation-delay:.2s} .typing-dots span:nth-child(3){animation-delay:.4s}
+  @keyframes dot { 0%,100%{opacity:.3;transform:translateY(0)} 50%{opacity:1;transform:translateY(-4px)} }
+  .chat-input-wrap { padding: .75rem; border-top: 1px solid var(--border); display: flex; gap: .5rem; }
+  .chat-input { flex: 1; background: rgba(255,255,255,.06); border: 1px solid var(--border); border-radius: 10px; padding: .6rem .9rem; color: var(--white); font-family: var(--font-body); font-size: .875rem; resize: none; line-height: 1.4; transition: border-color .2s; }
+  .chat-input:focus { outline: none; border-color: rgba(255,107,26,.4); }
+  .chat-input::placeholder { color: var(--muted); }
+  .chat-send { width: 40px; height: 40px; border-radius: 10px; background: var(--accent); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all .2s; flex-shrink: 0; align-self: flex-end; }
+  .chat-send:hover { background: var(--accent2); transform: scale(1.05); }
+  .chat-send svg { width: 18px; height: 18px; fill: #14110e; }
+</style>
+</head>
+<body>
+
+<!-- LASER CURSOR -->
+<div class="laser-cursor" id="laserCursor" aria-hidden="true">
+  <div class="laser-h" id="laserH"></div>
+  <div class="laser-v" id="laserV"></div>
+  <div class="laser-dot" id="laserDot"></div>
+</div>
+
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">ПОЛ<span>.СТЕНЫЧ</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">О мастере</a></li>
+    <li><a href="#tech">Технология</a></li>
+    <li><a href="#calculator">Цена</a></li>
+    <li><a href="#reviews">Отзывы</a></li>
+    <li><a href="#faq">Вопросы</a></li>
+    <li><a href="#contacts">Контакты</a></li>
+  </ul>
+  <a href="tel:+79388087266" class="nav-phone">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.12 2.2 2 2 0 012.11 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+    +7 938 808 72 66
+  </a>
+  <a href="tel:+79388087266" class="nav-phone-mobile" aria-label="Позвонить">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.12 2.2 2 2 0 012.11 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+  </a>
+  <div class="burger" id="burger" onclick="toggleNav()"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <video class="hero-bg" id="heroBg" autoplay muted loop playsinline preload="auto" poster="zero_blok.png">
+    <source src="zero_blok.mp4" type="video/mp4">
+  </video>
+  <div class="hero-grid" id="heroGrid"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Частный мастер · не диспетчер</div>
+    <h1>
+      <div>ПОЛУСУХАЯ СТЯЖКА</div>
+      <div class="accent">ЗА ОДИН ДЕНЬ —</div>
+      <div class="sub">БЕЗ ДИСПЕТЧЕРОВ<br>И СЮРПРИЗОВ В СМЕТЕ</div>
+    </h1>
+    <p class="hero-sub">Меня зовут Никита. С 2015 года делаю механизированную полусухую стяжку в Петербурге и области — тем же составом бригады, что и в первый год. На каждый объект приезжаю сам: замер, договор, работа, сдача. Цена — та, что в договоре. Мусор после нас — в мешках у мусоровоза, а не у вас в коридоре.</p>
+    <div class="hero-tag-row">
+      <div class="hero-tag">⚡ <span>Готово за 1 день</span></div>
+      <div class="hero-tag">🛡️ <span>Гарантия в договоре</span></div>
+      <div class="hero-tag">📋 <span>Фикс цена</span></div>
+      <div class="hero-tag">🧾 <span>Закрыв. документы</span></div>
+    </div>
+    <div class="hero-actions">
+      <a href="#contacts" class="btn-primary" id="ctaHero">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        Бесплатный выезд на замер
+      </a>
+      <a href="tel:+79388087266" class="btn-secondary">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.12 2.2 2 2 0 012.11 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        +7 938 808 72 66
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="hero-stat-num" data-count="9">0</div><div class="hero-stat-label">лет опыта с 2015 года</div></div>
+      <div><div class="hero-stat-num" data-count="4">0</div><div class="hero-stat-label">человека — та же бригада</div></div>
+      <div><div class="hero-stat-num" data-count="1">0</div><div class="hero-stat-label">день — готовый пол</div></div>
+    </div>
+  </div>
+  <a href="#about" class="hero-scroll" id="heroScroll" aria-label="Смотрите ниже">
+    <div class="hero-scroll-label">Смотрите ниже</div>
+    <div class="hero-scroll-orb">
+      <div class="hero-scroll-chevrons">
+        <svg viewBox="0 0 22 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 1 11 7 21 1"/></svg>
+        <svg viewBox="0 0 22 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 1 11 7 21 1"/></svg>
+        <svg viewBox="0 0 22 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 1 11 7 21 1"/></svg>
+      </div>
+    </div>
+  </a>
+</section>
+
+<!-- ABOUT (moved up from position 7) -->
+<section id="about">
+  <div class="section-tag">о мастере</div>
+  <h2 class="section-title reveal">КТО БУДЕТ<br>РАБОТАТЬ У ВАС</h2>
+  <p class="section-sub reveal reveal-delay-1">Лично отвечаю за каждый объект. Выезжаю на замер сам.</p>
+  <div class="about-wrap reveal reveal-delay-2">
+    <div class="about-photo-wrap">
+      <div class="about-photo" style="background:linear-gradient(135deg, var(--bg3) 0%, var(--bg2) 60%, #2a1f15 100%); display:flex; align-items:center; justify-content:center; font-size:7rem; color:rgba(255,107,26,.25); border:1px solid var(--border);">👷</div>
+      <div class="about-photo-badge">
+        <div class="name">НИКИТА</div>
+        <div class="role">Мастер · Бригада 4 чел. · с 2015 года</div>
+      </div>
+    </div>
+    <div class="about-content">
+      <div class="about-consult">
+        <div class="about-consult-icon">🤝</div>
+        <div class="about-consult-text">
+          <strong>Консультация и расчёт — бесплатно</strong>
+          <span>Без обязательств. Считаю цену честно и сразу называю её.</span>
+        </div>
+      </div>
+      <p class="about-lead">
+        Меня зовут <strong>Никита</strong>. Делаю механизированную полусухую стяжку пола в Петербурге и Ленобласти <strong>с 2015 года</strong>. За девять лет собрал подход, в котором мало сюрпризов для заказчика: на объект приезжаю <strong>лично</strong>, общаюсь напрямую — диспетчеров и менеджеров между нами нет. Работаем <strong>постоянным составом из четырёх человек</strong> — те же руки, те же головы, та же технология. Моя задача простая: чтобы к финалу ремонта у вас остались силы на сам ремонт, а не на выяснения с подрядчиком.
+      </p>
+      <div class="about-case">
+        <div class="about-case-tag">ПОСЛЕДНИЙ ОБЪЕКТ</div>
+        <div class="about-case-text">
+          Загородный дом во <span>Всеволожском районе</span>. Первый этаж, <span>120 м²</span>, средняя толщина <span>8 см</span>, фиброволокно.<br>
+          Завезли материал в <span>8 утра</span>, в <span>18:00</span> закрыли дверь за собой.<br>
+          Хозяин вернулся с работы — <span>мусора нет, пол ровный, договор закрыт</span>.
+        </div>
+      </div>
+      <div class="about-team">
+        <div class="about-team-item"><strong>В бригаде</strong>4 человека, постоянный состав</div>
+        <div class="about-team-item"><strong>Материалы</strong>Евроцемент М-500 + фиброволокно</div>
+        <div class="about-team-item"><strong>Точность уровня</strong>Лазерный ± 1 мм</div>
+        <div class="about-team-item"><strong>Для юр.лиц</strong>Закрывающие документы</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<section id="trust">
+  <div class="trust-inner">
+    <div class="trust-item"><div class="trust-icon">📄</div><div class="trust-label"><strong>Договор + акт</strong>на каждый объект</div></div>
+    <div class="trust-divider"></div>
+    <div class="trust-item"><div class="trust-icon">💰</div><div class="trust-label"><strong>Фикс. цена</strong>не меняется после замера</div></div>
+    <div class="trust-divider"></div>
+    <div class="trust-item"><div class="trust-icon">🛡️</div><div class="trust-label"><strong>Гарантия</strong>прописана в договоре</div></div>
+    <div class="trust-divider"></div>
+    <div class="trust-item"><div class="trust-icon">📍</div><div class="trust-label"><strong>СПб + ЛО</strong>работаем лично</div></div>
+    <div class="trust-divider"></div>
+    <div class="trust-item"><div class="trust-icon">🧾</div><div class="trust-label"><strong>Закрывающие</strong>документы для юр.лиц</div></div>
+  </div>
+</section>
+
+<!-- TECHNOLOGY -->
+<section id="tech" style="background:var(--bg2)">
+  <div class="section-tag">технология</div>
+  <h2 class="section-title reveal">ПОЛУСУХАЯ СТЯЖКА —<br>4 СЛОЯ</h2>
+  <p class="section-sub reveal reveal-delay-1">Почему она не трескается и не течёт к соседям</p>
+  <div class="steps-grid">
+    <div class="step-card reveal reveal-delay-1">
+      <div class="step-num">01</div>
+      <div class="step-title">Подготовка основания</div>
+      <div class="step-desc">Очистка, грунт, демпферная лента по периметру (компенсирует тепловое расширение), полиэтиленовая плёнка.</div>
+    </div>
+    <div class="step-card reveal reveal-delay-2">
+      <div class="step-num">02</div>
+      <div class="step-title">Маяки по лазеру</div>
+      <div class="step-desc">Выставляем маяки строго по лазерному нивелиру — перепад после затирки не больше 1 мм на 2 метра.</div>
+    </div>
+    <div class="step-card reveal reveal-delay-3">
+      <div class="step-num">03</div>
+      <div class="step-title">М-500 + фиброволокно</div>
+      <div class="step-desc">Подаём раствор пневмонагнетателем. Фиброволокно работает как микроарматура — стяжка не трескается и не даёт усадки.</div>
+    </div>
+    <div class="step-card reveal reveal-delay-4">
+      <div class="step-num">04</div>
+      <div class="step-title">Затирка и сдача</div>
+      <div class="step-desc">Финишная затирка дисковой машиной, проверка уровня правилом, упаковка и вывоз мусора, подписание акта.</div>
+    </div>
+  </div>
+  <div class="tech-highlight reveal reveal-delay-4">
+    <strong>Главное отличие от мокрой стяжки:</strong> <span>воды в смеси в разы меньше. Ничего не течёт на соседей, помещение не набирает лишнюю влагу, ходить можно через 12 часов.</span>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section id="benefits">
+  <div class="section-tag">почему мы</div>
+  <h2 class="section-title reveal">ЧТО ВАЖНО<br>ЗНАТЬ ДО ЗАМЕРА</h2>
+  <p class="section-sub reveal reveal-delay-1">Четыре вещи, на которых держится вся моя работа</p>
+  <div class="benefits-grid">
+    <div class="benefit-card reveal reveal-delay-1">
+      <div class="benefit-icon">⚡</div>
+      <div class="benefit-num">1</div>
+      <div class="benefit-title">день — и пол ваш</div>
+      <div class="benefit-desc">Квартира 60–80 м² — заливка и затирка за смену. Ходить можно через 12 часов, класть плитку — через сутки.</div>
+    </div>
+    <div class="benefit-card reveal reveal-delay-2">
+      <div class="benefit-icon">📄</div>
+      <div class="benefit-num">=</div>
+      <div class="benefit-title">Цена в договоре</div>
+      <div class="benefit-desc">Посчитали на замере — эту сумму и платите в конце. Вскрылись перепады в основании — это уже мои проблемы, а не ваши.</div>
+    </div>
+    <div class="benefit-card reveal reveal-delay-3">
+      <div class="benefit-icon">🛡️</div>
+      <div class="benefit-num">М-500</div>
+      <div class="benefit-title">+ фиброволокно</div>
+      <div class="benefit-desc">Беру евроцемент М-500 и армирующее фиброволокно. Такую стяжку не ведёт и не трещит — проверено девятью годами объектов.</div>
+    </div>
+    <div class="benefit-card reveal reveal-delay-4">
+      <div class="benefit-icon">👷</div>
+      <div class="benefit-num">4</div>
+      <div class="benefit-title">Та же бригада</div>
+      <div class="benefit-desc">Нет текучки, нет «пришлём кого-нибудь». Эти четверо работают со мной с 2015 года — поэтому за технологию отвечаю головой.</div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how" style="background:var(--bg2)">
+  <div class="section-tag">процесс</div>
+  <h2 class="section-title reveal">КАК ВЫГЛЯДИТ<br>РАБОТА СО МНОЙ</h2>
+  <p class="section-sub reveal reveal-delay-1">От звонка до подписанного акта — пять прозрачных шагов</p>
+  <div class="steps-grid">
+    <div class="step-card reveal reveal-delay-1">
+      <div class="step-num">01</div>
+      <div class="step-title">Звонок</div>
+      <div class="step-desc">Беру трубку сам, не секретарь. Задаю три вопроса: адрес, площадь, что под стяжкой дальше — ламинат, плитка, тёплый пол.</div>
+    </div>
+    <div class="step-card reveal reveal-delay-2">
+      <div class="step-num">02</div>
+      <div class="step-title">Замер на объекте</div>
+      <div class="step-desc">Приезжаю сам, бесплатно. Меряю лазером перепады, смотрю основание, считаю толщину и объём материала. По Петербургу — в день обращения, по области — на следующий.</div>
+    </div>
+    <div class="step-card reveal reveal-delay-3">
+      <div class="step-num">03</div>
+      <div class="step-title">Договор</div>
+      <div class="step-desc">В договоре — точная сумма, срок, толщина, материалы и гарантия. Физлицам — обычный бланк, юрлицам — со всеми закрывающими.</div>
+    </div>
+    <div class="step-card reveal reveal-delay-4">
+      <div class="step-num">04</div>
+      <div class="step-title">Сама стяжка</div>
+      <div class="step-desc">Приезжаем вчетвером. Разматываем рукав, ставим маяки по лазеру, подаём раствор пневмонагнетателем, затираем машиной. 150–200 м² — одна смена.</div>
+    </div>
+    <div class="step-card reveal reveal-delay-2">
+      <div class="step-num">05</div>
+      <div class="step-title">Сдача</div>
+      <div class="step-desc">Проверяем уровень правилом — не «на глазок». Мусор пакуем в мешки и увозим. Подписываем акт, отдаю гарантийный экземпляр договора.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CALCULATOR -->
+<section id="calculator">
+  <div class="section-tag">расчёт</div>
+  <h2 class="section-title reveal">УЗНАЙТЕ СТОИМОСТЬ<br>ЗА 1 МИНУТУ</h2>
+  <p class="section-sub reveal reveal-delay-1">Укажите параметры — получите ориентировочную цену под ключ с материалом</p>
+  <div class="calc-wrap">
+    <div class="calc-form reveal reveal-delay-2">
+      <div class="form-group">
+        <label>Площадь помещения — <strong id="areaDisplay">45</strong> м²</label>
+        <div class="area-presets">
+          <button class="preset-btn" data-val="30" onclick="setPreset(this)">Однушка<span>~30 м²</span></button>
+          <button class="preset-btn active" data-val="45" onclick="setPreset(this)">Двушка<span>~45 м²</span></button>
+          <button class="preset-btn" data-val="75" onclick="setPreset(this)">Трёшка<span>~75 м²</span></button>
+          <button class="preset-btn" data-val="150" onclick="setPreset(this)">Дом<span>~150 м²</span></button>
+        </div>
+        <input type="range" class="area-range" id="area" min="10" max="300" value="45" step="5" oninput="onAreaChange(this)">
+        <div class="range-hints"><span>10</span><span>100</span><span>200</span><span>300+ м²</span></div>
+      </div>
+      <div class="form-group">
+        <label>Толщина стяжки (см)</label>
+        <input type="number" class="form-control" id="thickness" placeholder="7" min="3" max="30" value="7" oninput="calculate()">
+        <p style="font-size:.75rem;color:var(--muted);margin-top:.4rem">Базовая толщина — 7 см. Точную скажу после замера.</p>
+      </div>
+      <button class="btn-primary" id="calcBtn" style="width:100%;justify-content:center;margin-top:.5rem" onclick="calculate()">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        Рассчитать стоимость
+      </button>
+      <p style="font-size:.75rem;color:var(--muted);margin-top:.75rem;text-align:center">Минимальный заказ — 25 000 ₽</p>
+    </div>
+    <div class="calc-result reveal reveal-delay-3" id="calcResult">
+      <div class="calc-result-empty">
+        <div class="big-icon">📐</div>
+        <div style="font-weight:600;margin-bottom:.5rem">Укажите параметры</div>
+        <div style="font-size:.85rem;color:var(--muted)">Выберите площадь, толщину и этаж — получите ориентир за секунды</div>
+      </div>
+      <div class="result-data" id="resultData">
+        <div class="result-item">
+          <label>Ориентировочный диапазон</label>
+          <div class="result-price" id="resultPrice">— <span class="rub">₽</span></div>
+          <div class="result-sub">под ключ: материал + работа + вывоз мусора</div>
+        </div>
+        <div class="result-breakdown" id="resultBreakdown"></div>
+        <div class="result-confidence">
+          <div class="confidence-label">Точность расчёта</div>
+          <div class="confidence-bar"><div class="confidence-fill" id="confidenceFill"></div></div>
+          <div class="confidence-note">~70% · точная цена — после бесплатного замера на объекте</div>
+        </div>
+        <a href="#contacts" class="btn-primary" style="justify-content:center" id="ctaCalc">
+          Бесплатный выезд на замер
+        </a>
+        <a href="tel:+79388087266" class="btn-secondary" style="justify-content:center">
+          📞 +7 938 808 72 66
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="section-tag">наши работы</div>
+  <h2 class="section-title reveal">ОБЪЕКТЫ,<br>КОТОРЫЕ МЫ СДЕЛАЛИ</h2>
+  <p class="section-sub reveal reveal-delay-1">Петербург и область, последние два года. Фото свои, не из интернета.</p>
+  <div class="portfolio-grid">
+    <div class="portfolio-card reveal reveal-delay-1"><img src="foto_rabot/8.png" alt="Стяжка пола квартира"><div class="portfolio-overlay"><div class="portfolio-tag">КВАРТИРА · 2025</div><div class="portfolio-title">Готовая стяжка, жилая комната</div><div class="portfolio-area">42 м² · толщина 8 см · 1 день</div></div></div>
+    <div class="portfolio-card reveal reveal-delay-2"><img src="foto_rabot/5.png" alt="Затирка стяжки машиной"><div class="portfolio-overlay"><div class="portfolio-tag">ПРОЦЕСС · 2025</div><div class="portfolio-title">Финишная затирка машиной</div><div class="portfolio-area">65 м² · толщина 7 см · 1 день</div></div></div>
+    <div class="portfolio-card reveal reveal-delay-3"><img src="foto_rabot/9.png" alt="Стяжка пола коридор"><div class="portfolio-overlay"><div class="portfolio-tag">НОВОСТРОЙКА · 2025</div><div class="portfolio-title">Стяжка в коридоре и комнатах</div><div class="portfolio-area">55 м² · толщина 8 см · 1 день</div></div></div>
+    <div class="portfolio-card reveal reveal-delay-1"><img src="foto_rabot/3.png" alt="Укладка тёплого пола"><div class="portfolio-overlay"><div class="portfolio-tag">ТЁПЛЫЙ ПОЛ · 2024</div><div class="portfolio-title">Монтаж тёплого пола, коттедж</div><div class="portfolio-area">90 м² · толщина 10 см · 1 день</div></div></div>
+    <div class="portfolio-card reveal reveal-delay-2"><img src="foto_rabot/7.png" alt="Готовая стяжка комната"><div class="portfolio-overlay"><div class="portfolio-tag">КВАРТИРА · 2024</div><div class="portfolio-title">Готовая стяжка под отделку</div><div class="portfolio-area">38 м² · толщина 8 см · 1 день</div></div></div>
+    <div class="portfolio-card reveal reveal-delay-3"><img src="foto_rabot/6.png" alt="Стяжка с оборудованием"><div class="portfolio-overlay"><div class="portfolio-tag">ПРОЦЕСС · 2024</div><div class="portfolio-title">Выравнивание и затирка</div><div class="portfolio-area">120 м² · толщина 7 см · 1 день</div></div></div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+
+<section id="reviews" style="background:var(--bg2)">
+  <div class="section-tag">отзывы</div>
+  <h2 class="section-title reveal">ОТЗЫВЫ<br>С АВИТО</h2>
+  <p class="section-sub reveal reveal-delay-1" style="margin-bottom:0">Шесть живых отзывов из моего профиля. Имена настоящие, сделки подтверждены площадкой — можно открыть и проверить.</p>
+  <div class="reviews-carousel reveal reveal-delay-2">
+    <button class="carousel-btn carousel-prev" id="revPrev" aria-label="Предыдущий отзыв">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <div class="reviews-row" id="reviewsRow">
+    <div class="review-card reveal reveal-delay-1">
+      <div class="review-quote">"</div>
+      <div class="review-text">Ребята отработали на 5 с плюсом, спасибо, всем советую.</div>
+      <div class="review-footer">
+        <div class="review-avatar">Ю</div>
+        <div>
+          <div class="review-name">Юрий</div>
+          <div class="review-stars">★★★★★</div>
+          <div class="review-date">22 марта 2026 · Коттедж, полусухая стяжка</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card reveal reveal-delay-2">
+      <div class="review-quote">"</div>
+      <div class="review-text">Созвонился с Никитой, обговорили работу и цену. Ребята приехали оперативно, выполнили своё дело на отлично!! 👌 Рекомендую 👍</div>
+      <div class="review-footer">
+        <div class="review-avatar">А</div>
+        <div>
+          <div class="review-name">Александр</div>
+          <div class="review-stars">★★★★★</div>
+          <div class="review-date">11 марта 2026 · Полусухая стяжка за 1 день</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card reveal reveal-delay-3">
+      <div class="review-quote">"</div>
+      <div class="review-text">Добрый день! Хотел ещё раз выразить благодарность за проделанную работу! Ребята молодцы, отработали чётко, быстро и самое главное — качественно! Работой очень доволен, пол получился идеально ровный!</div>
+      <div class="review-footer">
+        <div class="review-avatar">А</div>
+        <div>
+          <div class="review-name">Алексей</div>
+          <div class="review-stars">★★★★★</div>
+          <div class="review-date">1 декабря 2025 · Полусухая стяжка за 1 день</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card reveal reveal-delay-1">
+      <div class="review-quote">"</div>
+      <div class="review-text">Договорились о работах заранее. В назначенное время и день приехала бригада. Всё сделали быстро и качественно. Цена соответствовала договорённой. Необходимые уклоны сделали. После себя всё убрали.</div>
+      <div class="review-footer">
+        <div class="review-avatar">Г</div>
+        <div>
+          <div class="review-name">Генри</div>
+          <div class="review-stars">★★★★★</div>
+          <div class="review-date">29 ноября 2025 · Полусухая стяжка за 1 день</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card reveal reveal-delay-2">
+      <div class="review-quote">"</div>
+      <div class="review-text">Работу произвели оперативно, отдельное спасибо за грамотную и пунктуальную организацию работы. Сама работа была на высоте — за неполных три часа залили 70 м². Удачи и спокойных вам клиентов.</div>
+      <div class="review-footer">
+        <div class="review-avatar">Н</div>
+        <div>
+          <div class="review-name">Николай</div>
+          <div class="review-stars">★★★★★</div>
+          <div class="review-date">20 октября 2025 · 70 м² · за 3 часа</div>
+        </div>
+      </div>
+    </div>
+    <div class="review-card reveal reveal-delay-3">
+      <div class="review-quote">"</div>
+      <div class="review-text">Всё сделал чётко и быстро. Качеством доволен. Исполнитель организован, по мелочам не дёргал. Буду рекомендовать.</div>
+      <div class="review-footer">
+        <div class="review-avatar">Н</div>
+        <div>
+          <div class="review-name">Николай</div>
+          <div class="review-stars">★★★★★</div>
+          <div class="review-date">24 апреля 2025 · Стяжка под тёплый пол, коттедж</div>
+        </div>
+      </div>
+    </div>
+    </div>
+    <button class="carousel-btn carousel-next" id="revNext" aria-label="Следующий отзыв">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+  </div>
+</section>
+
+<!-- WHAT'S INCLUDED -->
+<section id="included">
+  <div class="section-tag">без доплат</div>
+  <h2 class="section-title reveal">ЧТО ВХОДИТ<br>В ЦЕНУ</h2>
+  <p class="section-sub reveal reveal-delay-1">Если чего-то нет в списке — значит, вы за это не платите</p>
+  <div class="included-grid">
+    <div class="included-item reveal reveal-delay-1">
+      <div class="included-check">✓</div>
+      <div>
+        <div class="included-title">Бесплатный замер</div>
+        <div class="included-desc">Приезжаю сам, с лазером, в день обращения по Петербургу</div>
+      </div>
+    </div>
+    <div class="included-item reveal reveal-delay-2">
+      <div class="included-check">✓</div>
+      <div>
+        <div class="included-title">Материалы</div>
+        <div class="included-desc">Евроцемент М-500, армирующее фиброволокно, плёнка, демпферная лента</div>
+      </div>
+    </div>
+    <div class="included-item reveal reveal-delay-3">
+      <div class="included-check">✓</div>
+      <div>
+        <div class="included-title">Доставка на объект</div>
+        <div class="included-desc">Материал и оборудование везём сами — от вас только доступ в помещение</div>
+      </div>
+    </div>
+    <div class="included-item reveal reveal-delay-1">
+      <div class="included-check">✓</div>
+      <div>
+        <div class="included-title">Работа бригады</div>
+        <div class="included-desc">Замер, маяки, заливка, затирка — всё за одну смену</div>
+      </div>
+    </div>
+    <div class="included-item reveal reveal-delay-2">
+      <div class="included-check">✓</div>
+      <div>
+        <div class="included-title">Уборка и вывоз мусора</div>
+        <div class="included-desc">Весь мусор пакуем в мешки и увозим — помещение сдаём чистым</div>
+      </div>
+    </div>
+    <div class="included-item reveal reveal-delay-3">
+      <div class="included-check">✓</div>
+      <div>
+        <div class="included-title">Договор и гарантия</div>
+        <div class="included-desc">Точная сумма, сроки, гарантия. Юрлицам — закрывающие документы</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" style="background:var(--bg2)">
+  <div class="section-tag">ответы</div>
+  <h2 class="section-title reveal">ЧАСТЫЕ<br>ВОПРОСЫ</h2>
+  <p class="section-sub reveal reveal-delay-1">Спрашивают на замере — отвечаю здесь, чтобы не тратить ваше время</p>
+  <div class="faq-list">
+    <details class="faq-item reveal reveal-delay-1">
+      <summary>Сколько стоит квадратный метр?</summary>
+      <div class="faq-answer">Точную цену скажу только после замера — она зависит от перепадов в основании, толщины и общей площади. Для ориентира: однушка 30 м² — от 58 000 ₽ под ключ, трёшка 75 м² — от 140 000 ₽. В калькуляторе выше — примерный диапазон.</div>
+    </details>
+    <details class="faq-item reveal reveal-delay-2">
+      <summary>Чем полусухая стяжка отличается от мокрой?</summary>
+      <div class="faq-answer">Воды в смеси в разы меньше. Отсюда три плюса: не течёт на нижние этажи, помещение не набирает лишнюю влагу, ходить можно уже через 12 часов (мокрой — через неделю). Плюс армирование фиброволокном — стяжка не трескается и не даёт усадки.</div>
+    </details>
+    <details class="faq-item reveal reveal-delay-3">
+      <summary>Через сколько можно класть плитку или ламинат?</summary>
+      <div class="faq-answer">Плитку — через 3–4 дня, ламинат — через 7–10 дней. Точный срок зависит от толщины слоя и вентиляции помещения. Ходить по стяжке можно уже через 12 часов.</div>
+    </details>
+    <details class="faq-item reveal reveal-delay-4">
+      <summary>Работаете с тёплым полом?</summary>
+      <div class="faq-answer">Да, делаю под водяной и электрический тёплый пол. Труба или кабель закладываются в стяжку, маяки ставим с учётом нужного защитного слоя над ними.</div>
+    </details>
+    <details class="faq-item reveal reveal-delay-1">
+      <summary>Выезжаете в область зимой?</summary>
+      <div class="faq-answer">Выезжаю. Условие одно: помещение отапливается, температура не ниже +5°C. Если объект холодный — договариваемся на весну, чтобы стяжка нормально набрала прочность.</div>
+    </details>
+    <details class="faq-item reveal reveal-delay-2">
+      <summary>Как оплата — нал, карта, безнал?</summary>
+      <div class="faq-answer">Физлицам — наличные или карта, небольшой аванс на материалы, остальное после подписания акта приёмки. Юрлицам — безналичный расчёт, даю все закрывающие документы (акт, счёт, договор).</div>
+    </details>
+    <details class="faq-item reveal reveal-delay-3">
+      <summary>Что если через полгода появится трещина?</summary>
+      <div class="faq-answer">По гарантии в договоре — приезжаю и устраняю бесплатно. Но на фиброволокне и М-500 такого за девять лет практически не случалось — технология исключает усадку и растрескивание.</div>
+    </details>
+  </div>
+</section>
+
+<!-- CONTACTS -->
+<section id="contacts">
+  <div class="section-tag">связаться</div>
+  <h2 class="section-title reveal">ПОЗВОНИТЕ<br>ИЛИ ОСТАВЬТЕ НОМЕР</h2>
+  <p class="section-sub reveal reveal-delay-1">Беру трубку сам, с 8 до 20. Если занят на объекте — перезвоню в течение часа. Замер, расчёт и консультация — бесплатно и без обязательств.</p>
+  <div class="contacts-grid">
+    <div class="contact-info reveal reveal-delay-2">
+      <div class="contact-item">
+        <div class="contact-item-icon">📞</div>
+        <div><div class="contact-item-label">Позвонить Никите</div><div class="contact-item-value"><a href="tel:+79388087266">+7 938 808 72 66</a></div></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-icon">💬</div>
+        <div><div class="contact-item-label">Чат на Авито</div><div class="contact-item-value"><a href="https://www.avito.ru/user/3fc84a421240e13e69770af0bbdc5b2c/profile/all" target="_blank" rel="noopener">Написать в чате Авито →</a></div></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-icon">🕐</div>
+        <div><div class="contact-item-label">Режим работы</div><div class="contact-item-value">Пн–Вс, 08:00 — 20:00</div></div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-item-icon">📍</div>
+        <div><div class="contact-item-label">Зона работ</div><div class="contact-item-value">СПб и ЛО (до 100 км от КАД)</div></div>
+      </div>
+      <div class="contact-item" style="border-color:rgba(255,107,26,.3)">
+        <div class="contact-item-icon">🧾</div>
+        <div><div class="contact-item-label">Для юридических лиц</div><div class="contact-item-value" style="color:var(--accent2)">Закрывающие документы + безнал</div></div>
+      </div>
+    </div>
+    <div class="contact-form reveal reveal-delay-3">
+      <h3>Записаться на замер</h3>
+      <div class="form-group"><label>Ваше имя</label><input type="text" class="form-control" id="contactName" placeholder="Иван Иванов"></div>
+      <div class="form-group"><label>Телефон</label><input type="tel" class="form-control" id="contactPhone" placeholder="+7 (___) ___-__-__"></div>
+      <div class="form-group"><label>Площадь (м²) — примерно</label><input type="number" class="form-control" id="contactArea" placeholder="60"></div>
+      <div class="form-group"><label>Комментарий</label><input type="text" class="form-control" id="contactComment" placeholder="Новостройка, 5 этаж, есть лифт"></div>
+      <button class="btn-primary" id="ctaForm" style="width:100%;justify-content:center;margin-top:1rem" onclick="submitForm()">Отправить Никите →</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="#" class="footer-logo">ПОЛ<span>.СТЕНЫЧ</span></a>
+  <div class="footer-copy">© 2026 ПолСтеныч — полусухая стяжка в СПб и ЛО</div>
+  <a href="tel:+79388087266" class="footer-phone">+7 938 808 72 66</a>
+</footer>
+
+<!-- STICKY MOBILE CTA -->
+<div class="sticky-cta" id="stickyCta">
+  <a href="tel:+79388087266" class="sticky-call">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.12 2.2 2 2 0 012.11 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+    +7 938 808 72 66
+  </a>
+  <a href="#contacts" class="sticky-order">Вызвать замер</a>
+</div>
+
+<!-- SOCIAL ICONS -->
+<div class="social-dock">
+  <a href="https://www.avito.ru/user/3fc84a421240e13e69770af0bbdc5b2c/profile/all" target="_blank" rel="noopener" class="social-btn" title="Чат на Авито" style="background:#00a046; box-shadow:0 3px 14px rgba(0,160,70,.45);">
+    <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2v10z"/></svg>
+  </a>
+  <a href="tel:+79388087266" class="social-btn" title="Позвонить" style="background:var(--accent); box-shadow:0 3px 14px rgba(255,107,26,.5);">
+    <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.12 2.2 2 2 0 012.11 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+  </a>
+</div>
+
+<!-- CHAT WIDGET -->
+<button class="chat-bubble" id="chatBubble" onclick="toggleChat()">
+  <svg class="chat-icon-svg" viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+  <svg class="chat-close" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18" stroke="#14110e" stroke-width="2.5" stroke-linecap="round"/><line x1="6" y1="6" x2="18" y2="18" stroke="#14110e" stroke-width="2.5" stroke-linecap="round"/></svg>
+</button>
+<div class="chat-panel" id="chatPanel">
+  <div class="chat-header">
+    <div class="chat-avatar">👷</div>
+    <div class="chat-header-info">
+      <h4>Помощник Никиты</h4>
+      <div class="chat-status">отвечаю быстро</div>
+    </div>
+  </div>
+  <div class="chat-messages" id="chatMessages">
+    <div class="chat-msg bot">
+      <div class="msg-bubble">Здравствуйте 👋 Никита сейчас на объекте.<br>Я его помощник — занимаемся полусухой стяжкой пола в СПб и Ленобласти.<br><br>Чтобы прикинуть стоимость, скажите площадь, толщину и этаж — или звоните напрямую: <strong>+7 938 808 72 66</strong></div>
+      <div class="msg-time">сейчас</div>
+    </div>
+  </div>
+  <div class="chat-input-wrap">
+    <textarea class="chat-input" id="chatInput" placeholder="Напишите вопрос..." rows="1" onkeydown="chatKeydown(event)"></textarea>
+    <button class="chat-send" onclick="sendChatMessage()">
+      <svg viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+    </button>
+  </div>
+</div>
+
+<script>
+// === REVIEWS CAROUSEL ===
+(function() {
+  const row = document.getElementById('reviewsRow');
+  const prev = document.getElementById('revPrev');
+  const next = document.getElementById('revNext');
+  if (!row || !prev || !next) return;
+
+  const getStep = () => {
+    const card = row.querySelector('.review-card');
+    if (!card) return 400;
+    const gap = parseFloat(getComputedStyle(row).gap) || 24;
+    return card.offsetWidth + gap;
+  };
+
+  const updateBtns = () => {
+    const maxScroll = row.scrollWidth - row.clientWidth - 2;
+    prev.disabled = row.scrollLeft <= 2;
+    next.disabled = row.scrollLeft >= maxScroll;
+  };
+
+  prev.addEventListener('click', () => row.scrollBy({ left: -getStep(), behavior: 'smooth' }));
+  next.addEventListener('click', () => row.scrollBy({ left: getStep(), behavior: 'smooth' }));
+  row.addEventListener('scroll', updateBtns, { passive: true });
+  window.addEventListener('resize', updateBtns);
+  updateBtns();
+})();
+
+// === LASER CURSOR ===
+(function() {
+  if (window.matchMedia('(hover: none)').matches) return;
+  const cur = document.getElementById('laserCursor');
+  const h = document.getElementById('laserH');
+  const v = document.getElementById('laserV');
+  const dot = document.getElementById('laserDot');
+  if (!cur || !h || !v || !dot) return;
+  let mx = -100, my = -100, rafId = null;
+  const INTERACTIVE = 'a, button, .preset-btn, .radio-btn, .benefit-card, .step-card, .portfolio-card, .review-card, .included-item, .faq-item summary, .hero-scroll, .chat-bubble, .social-btn';
+
+  document.addEventListener('mousemove', (e) => {
+    mx = e.clientX; my = e.clientY;
+    cur.classList.add('active');
+    if (!rafId) rafId = requestAnimationFrame(apply);
+  }, { passive: true });
+
+  document.addEventListener('mouseleave', () => cur.classList.remove('active'));
+  document.addEventListener('mouseenter', () => cur.classList.add('active'));
+
+  function apply() {
+    h.style.transform = `translateY(${my}px)`;
+    v.style.transform = `translateX(${mx}px)`;
+    dot.style.left = mx + 'px';
+    dot.style.top = my + 'px';
+    rafId = null;
+  }
+
+  document.addEventListener('mouseover', (e) => {
+    if (e.target.closest(INTERACTIVE)) cur.classList.add('hot');
+  });
+  document.addEventListener('mouseout', (e) => {
+    if (e.target.closest(INTERACTIVE) && !e.relatedTarget?.closest?.(INTERACTIVE)) cur.classList.remove('hot');
+  });
+})();
+
+// === NAV ===
+window.addEventListener('scroll', () => {
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+  const hs = document.getElementById('heroScroll');
+  if (hs) hs.classList.toggle('fade-out', window.scrollY > 120);
+});
+function toggleNav() { document.getElementById('navLinks').classList.toggle('open'); }
+document.getElementById('navLinks').querySelectorAll('a').forEach(a => a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open')));
+
+// === COUNTERS ===
+function animateCounter(el) {
+  const target = parseInt(el.dataset.count), duration = 1800;
+  let current = 0, step = target / (duration / 16);
+  const timer = setInterval(() => {
+    current += step;
+    if (current >= target) { current = target; clearInterval(timer); }
+    el.textContent = Math.floor(current).toLocaleString('ru');
+  }, 16);
+}
+const counterObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { animateCounter(e.target); counterObs.unobserve(e.target); } });
+}, { threshold: 0.5 });
+document.querySelectorAll('[data-count]').forEach(el => counterObs.observe(el));
+
+// === REVEAL ===
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// === PARALLAX HERO ===
+let ticking = false;
+window.addEventListener('scroll', () => {
+  if (!ticking) {
+    requestAnimationFrame(() => {
+      const s = window.scrollY, heroH = document.getElementById('hero').offsetHeight;
+      if (s <= heroH) {
+        document.getElementById('heroGrid').style.transform = `translateY(${s * 0.2}px)`;
+      }
+      ticking = false;
+    });
+    ticking = true;
+  }
+}, { passive: true });
+
+
+// === CALCULATOR ===
+function setPreset(el) {
+  document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
+  const val = el.dataset.val;
+  const range = document.getElementById('area');
+  range.value = val;
+  document.getElementById('areaDisplay').textContent = val;
+  updateRangeTrack(range);
+  calculate();
+}
+function onAreaChange(el) {
+  document.getElementById('areaDisplay').textContent = el.value;
+  document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+  updateRangeTrack(el);
+  calculate();
+}
+function updateRangeTrack(el) {
+  const pct = (el.value - el.min) / (el.max - el.min) * 100;
+  el.style.background = `linear-gradient(90deg, var(--accent) ${pct}%, rgba(255,255,255,.1) ${pct}%)`;
+}
+// init track
+updateRangeTrack(document.getElementById('area'));
+
+function animatePrice(el, val, lo, hi) {
+  el.style.transform = 'scale(.95)'; el.style.opacity = '.5';
+  setTimeout(() => {
+    if (lo !== undefined && hi !== undefined) {
+      el.innerHTML = `${lo.toLocaleString('ru')}–${hi.toLocaleString('ru')} <span class="rub">₽</span>`;
+    } else {
+      el.innerHTML = `${val.toLocaleString('ru')} <span class="rub">₽</span>`;
+    }
+    el.style.transform = 'scale(1)'; el.style.opacity = '1';
+  }, 150);
+}
+
+function calculate() {
+  const area = parseFloat(document.getElementById('area').value);
+  const thickness = parseFloat(document.getElementById('thickness').value) || 7;
+  if (!area || area < 1) return;
+
+  let basePrice;
+  if (area <= 10) basePrice = 48000;
+  else if (area <= 17) basePrice = 58000;
+  else if (area <= 35) basePrice = 65000;
+  else if (area <= 50) basePrice = 90000;
+  else if (area <= 100) basePrice = 140000;
+  else basePrice = 140000 + Math.ceil((area - 100) / 50) * 50000;
+
+  const thickExtra = thickness > 7 ? (thickness - 7) * 100 * area : 0;
+  const total = Math.max(25000, basePrice + thickExtra);
+  const lo = Math.floor(total * 0.9 / 1000) * 1000;
+  const hi = Math.ceil(total * 1.1 / 1000) * 1000;
+
+  const result = document.getElementById('calcResult');
+  result.classList.add('has-result');
+  animatePrice(document.getElementById('resultPrice'), total, lo, hi);
+
+  const breakdown = [`Площадь ${area} м², толщина ${thickness} см`];
+  breakdown.push(`Материал (М-500 + фиброволокно), работа, вывоз мусора — включено`);
+  document.getElementById('resultBreakdown').innerHTML = breakdown.join('<br>');
+
+  setTimeout(() => { document.getElementById('confidenceFill').style.width = '70%'; }, 200);
+}
+document.getElementById('thickness').addEventListener('input', calculate);
+
+// === CONTACT FORM ===
+function submitForm() {
+  const name = document.getElementById('contactName').value.trim();
+  const phone = document.getElementById('contactPhone').value.trim();
+  if (!name || !phone) { alert('Пожалуйста, заполните имя и телефон'); return; }
+  alert(`Спасибо, ${name}! Заявка принята. Никита перезвонит вам в ближайшее время на номер ${phone}.`);
+  ['contactName','contactPhone','contactArea','contactComment'].forEach(id => document.getElementById(id).value = '');
+}
+
+// === RIPPLE ON BUTTONS ===
+document.querySelectorAll('.btn-primary').forEach(btn => {
+  btn.addEventListener('click', function(e) {
+    const rect = this.getBoundingClientRect();
+    const size = Math.max(rect.width, rect.height);
+    const ripple = document.createElement('span');
+    ripple.className = 'ripple';
+    ripple.style.cssText = `width:${size}px;height:${size}px;left:${e.clientX - rect.left - size/2}px;top:${e.clientY - rect.top - size/2}px`;
+    this.appendChild(ripple);
+    setTimeout(() => ripple.remove(), 900);
+  });
+});
+
+// === STICKY MOBILE CTA ===
+const stickyCta = document.getElementById('stickyCta');
+window.addEventListener('scroll', () => {
+  if (window.innerWidth <= 768) stickyCta.classList.toggle('visible', window.scrollY > 300);
+}, { passive: true });
+
+
+// === CHAT ===
+let chatOpen=false, chatHistory=[];
+function toggleChat(){
+  chatOpen=!chatOpen;
+  document.getElementById('chatBubble').classList.toggle('open',chatOpen);
+  document.getElementById('chatPanel').classList.toggle('open',chatOpen);
+  document.querySelector('.chat-badge').style.display='none';
+  if(chatOpen) setTimeout(()=>document.getElementById('chatInput').focus(),300);
+}
+function getChatTime(){const n=new Date();return`${n.getHours().toString().padStart(2,'0')}:${n.getMinutes().toString().padStart(2,'0')}`;}
+function addMessage(text,role){
+  const c=document.getElementById('chatMessages'),d=document.createElement('div');
+  d.className=`chat-msg ${role}`;
+  d.innerHTML=`<div class="msg-bubble">${text}</div><div class="msg-time">${getChatTime()}</div>`;
+  c.appendChild(d);c.scrollTop=c.scrollHeight;
+}
+function showTyping(){const c=document.getElementById('chatMessages'),d=document.createElement('div');d.className='chat-msg bot';d.id='typingIndicator';d.innerHTML='<div class="typing-dots"><span></span><span></span><span></span></div>';c.appendChild(d);c.scrollTop=c.scrollHeight;}
+function hideTyping(){const el=document.getElementById('typingIndicator');if(el)el.remove();}
+async function sendChatMessage(){
+  const input=document.getElementById('chatInput'),message=input.value.trim();
+  if(!message)return;
+  input.value='';input.style.height='auto';
+  addMessage(message,'user');chatHistory.push({role:'user',content:message});showTyping();
+  try{
+    const res=await fetch('/api/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message,history:chatHistory.slice(-10),system:"Ты помощник Никиты — мастера по механизированной полусухой стяжке пола в СПб и ЛО. Никита работает с 2015 года, бригада 4 человека (постоянный состав), лично присутствует на каждом объекте. Материалы: евроцемент М-500 + армирующее фиброволокно. Цена фиксируется в договоре и не меняется. Весь мусор упаковываем и выносим. Гарантия прописана в договоре. Работаем с физ и юр лицами, даём закрывающие документы. Цены ориентир: до 10м²-48000₽, 11-17м²-58000₽, 18-35м²-65000₽, 36-50м²-90000₽, 51-100м²-140000₽. Толщина>7см: +(толщина-7)×100×площадь. Подъём без лифта: (этаж-1)×500₽. Тел: +7 938 808 72 66. Чат на Авито. Будь кратким, конкретным, по-деловому."})});
+    hideTyping();
+    if(res.ok){const data=await res.json();const reply=data.reply||data.message||'Получил!';addMessage(reply,'bot');chatHistory.push({role:'assistant',content:reply});}
+    else throw new Error();
+  }catch{hideTyping();const r=getFallback(message);addMessage(r,'bot');chatHistory.push({role:'assistant',content:r});}
+}
+function getFallback(msg){
+  const m=msg.toLowerCase();
+  if(m.includes('цен')||m.includes('стоит')||m.includes('сколько'))return'Стоимость зависит от площади:<br>• до 10 м² — 48 000 ₽<br>• 11–17 м² — 58 000 ₽<br>• 18–35 м² — 65 000 ₽<br>• 36–50 м² — 90 000 ₽<br>• 51–100 м² — 140 000 ₽<br><br>Под ключ с материалом 👆 Калькулятор — на сайте выше';
+  if(m.includes('срок')||m.includes('дн')||m.includes('долго'))return'До 100 м² — за 1 день. Ходить через 12 часов, нагрузка — через 3–5 дней 🚀';
+  if(m.includes('гарант'))return'Гарантия прописана в договоре. Используем евроцемент М-500 + фиброволокно — стяжка не трескается и не даёт усадки 🛡️';
+  if(m.includes('замер')||m.includes('выезд'))return'Выезд бесплатный, в день обращения. Звоните: <strong>+7 938 808 72 66</strong> 📞';
+  if(m.includes('толщин')||m.includes('слой'))return'Базовая толщина до 7 см. За каждый см сверху: +100 ₽ × площадь. Для 30 м² при 9 см = +6 000 ₽';
+  if(m.includes('лифт')||m.includes('этаж'))return'Подъём материалов:<br>• Грузовой лифт — +5 000 ₽<br>• Пассажирский / без лифта — (этаж−1)×500 ₽<br>• Частный дом — бесплатно';
+  if(m.includes('материал')||m.includes('цемент')||m.includes('фибро'))return'Работаем на евроцементе <strong>М-500</strong> + армирующее фиброволокно. Это исключает трещины и усадку при эксплуатации.';
+  if(m.includes('мусор')||m.includes('убор'))return'Весь строительный мусор упаковываем и выносим сами. Помещение передаём чистым 🧹';
+  if(m.includes('юр')||m.includes('ооо')||m.includes('ип')||m.includes('документ'))return'Работаем с юр.лицами. Даём закрывающие документы (акт, счёт-фактура). Оплата по безналу.';
+  if(m.includes('диспетчер')||m.includes('бригад'))return'Никаких диспетчеров. Бригада 4 человека — постоянный состав. Никита лично присутствует на каждом объекте.';
+  return'Позвоните Никите напрямую: <strong>+7 938 808 72 66</strong> или напишите в чате на Авито 👷';
+}
+function chatKeydown(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendChatMessage();}}
+document.getElementById('chatInput').addEventListener('input',function(){this.style.height='auto';this.style.height=Math.min(this.scrollHeight,100)+'px';});
+</script>
+</body>
+</html>
