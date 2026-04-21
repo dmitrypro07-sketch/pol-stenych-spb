@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ПолСтеныч — полусухая стяжка пола в СПб и ЛО. Мастер Никита, с 2015</title>
 <meta name="description" content="Механизированная полусухая стяжка пола в Санкт-Петербурге и Ленобласти. Мастер Никита, 9 лет опыта, бригада 4 человека. Евроцемент М-500 и фиброволокно. Фикс цена в договоре. Звоните: +7 938 808 72 66">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='10' fill='%2314110e'/><line x1='0' y1='22' x2='64' y2='22' stroke='%23ff6b1a' stroke-width='1.5' opacity='0.5'/><line x1='0' y1='32' x2='64' y2='32' stroke='%23ff8c42' stroke-width='2.5'/><line x1='0' y1='42' x2='64' y2='42' stroke='%23ff6b1a' stroke-width='1.5' opacity='0.5'/><rect x='20' y='18' width='24' height='28' rx='4' fill='%2326201b' stroke='%23ff6b1a' stroke-width='1.5'/><text x='32' y='36' dominant-baseline='middle' text-anchor='middle' font-family='Arial Black,sans-serif' font-weight='900' font-size='18' fill='%23ff6b1a'>Р</text></svg>">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect x='4' y='4' width='56' height='56' rx='7' fill='%2314110e' stroke='%23ff6b1a' stroke-width='3'/><text x='32' y='44' text-anchor='middle' font-family='Arial Black,Impact,sans-serif' font-size='30' font-weight='900' fill='%23f5f1ec' letter-spacing='-1'>%D0%9F%D0%A1</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -35,8 +35,15 @@
   /* NAV */
   nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 6vw; height: 68px; background: rgba(20,17,14,0.92); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border); transition: height .3s; }
   nav.scrolled { height: 58px; }
-  .nav-logo { font-family: var(--font-head); font-size: 1.4rem; letter-spacing: .08em; color: var(--white); text-decoration: none; }
-  .nav-logo span { color: var(--accent); }
+  .nav-logo { display: inline-flex; align-items: center; gap: .55rem; color: var(--white); text-decoration: none; transition: opacity .2s; }
+  .nav-logo:hover { opacity: .85; }
+  .nav-logo-mark { width: 34px; height: 34px; flex-shrink: 0; }
+  .nav-logo-mark rect { fill: transparent; stroke: var(--accent); }
+  .nav-logo-mark .mono { font-family: var(--font-head); font-size: 17px; font-weight: 900; fill: var(--white); letter-spacing: -0.5px; }
+  .nav-logo-mark .stamp { font-family: var(--font-mono); font-size: 3.2px; fill: var(--accent); letter-spacing: .3px; }
+  .nav-logo-wordmark { font-family: var(--font-head); font-size: 1.35rem; letter-spacing: .06em; line-height: 1; white-space: nowrap; }
+  .nav-logo-wordmark .accent { color: var(--accent); }
+  @media (max-width: 480px) { .nav-logo-wordmark { display: none; } }
   .nav-links { display: flex; gap: 2rem; list-style: none; }
   .nav-links a { text-decoration: none; color: var(--muted); font-size: .875rem; font-weight: 500; transition: color .2s; }
   .nav-links a:hover { color: var(--white); }
@@ -263,8 +270,12 @@
 
   /* FOOTER */
   footer { background: var(--bg); border-top: 1px solid var(--border); padding: 2.5rem 6vw; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
-  .footer-logo { font-family: var(--font-head); font-size: 1.2rem; letter-spacing: .08em; color: var(--white); text-decoration: none; }
-  .footer-logo span { color: var(--accent); }
+  .footer-logo { display: inline-flex; align-items: center; gap: .5rem; color: var(--white); text-decoration: none; }
+  .footer-logo-mark { width: 28px; height: 28px; flex-shrink: 0; }
+  .footer-logo-mark rect { fill: transparent; stroke: var(--accent); }
+  .footer-logo-mark .mono { font-family: var(--font-head); font-size: 17px; font-weight: 900; fill: var(--white); letter-spacing: -0.5px; }
+  .footer-logo-wordmark { font-family: var(--font-head); font-size: 1.1rem; letter-spacing: .07em; }
+  .footer-logo-wordmark .accent { color: var(--accent); }
   .footer-copy { font-size: .8rem; color: var(--muted); }
   .footer-phone { font-size: .9rem; font-weight: 600; color: var(--white); text-decoration: none; }
   .footer-phone:hover { color: var(--accent2); }
@@ -487,7 +498,14 @@
 
 <!-- NAV -->
 <nav id="navbar">
-  <a href="#" class="nav-logo">ПОЛ<span>.СТЕНЫЧ</span></a>
+  <a href="#" class="nav-logo" aria-label="ПолСтеныч — полусухая стяжка пола в СПб">
+    <svg class="nav-logo-mark" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <rect x="1.5" y="1.5" width="37" height="37" rx="3.5" stroke-width="1.8"/>
+      <text x="20" y="22" text-anchor="middle" class="mono">ПС</text>
+      <text x="20" y="32" text-anchor="middle" class="stamp">М-500·СПБ·15</text>
+    </svg>
+    <span class="nav-logo-wordmark">ПОЛ<span class="accent">СТЕНЫЧ</span></span>
+  </a>
   <ul class="nav-links" id="navLinks">
     <li><a href="#about">О мастере</a></li>
     <li><a href="#tech">Технология</a></li>
@@ -1005,7 +1023,13 @@
 
 <!-- FOOTER -->
 <footer>
-  <a href="#" class="footer-logo">ПОЛ<span>.СТЕНЫЧ</span></a>
+  <a href="#" class="footer-logo" aria-label="ПолСтеныч">
+    <svg class="footer-logo-mark" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <rect x="1.5" y="1.5" width="37" height="37" rx="3.5" stroke-width="1.8"/>
+      <text x="20" y="26" text-anchor="middle" class="mono">ПС</text>
+    </svg>
+    <span class="footer-logo-wordmark">ПОЛ<span class="accent">СТЕНЫЧ</span></span>
+  </a>
   <div class="footer-copy">© 2026 ПолСтеныч — полусухая стяжка в СПб и ЛО</div>
   <a href="tel:+79388087266" class="footer-phone">+7 938 808 72 66</a>
 </footer>
