@@ -1057,17 +1057,26 @@
 
 <!-- SOCIAL ICONS -->
 <div class="social-dock">
-  <a href="https://www.avito.ru/user/3fc84a421240e13e69770af0bbdc5b2c/profile/all" target="_blank" rel="noopener" class="social-btn" title="Чат на Авито" style="background:#00a046; box-shadow:0 3px 14px rgba(0,160,70,.45);">
+  <a href="https://www.avito.ru/user/3fc84a421240e13e69770af0bbdc5b2c/profile/all" target="_blank" rel="noopener" class="social-btn" title="Чат на Авито" aria-label="Чат на Авито" style="background:#00a046; box-shadow:0 3px 14px rgba(0,160,70,.45);">
     <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2v10z"/></svg>
   </a>
-  <a href="tel:+79388087266" class="social-btn" title="Позвонить" style="background:var(--accent); box-shadow:0 3px 14px rgba(255,107,26,.5);">
+  <a href="#" target="_blank" rel="noopener" class="social-btn social-max" title="MAX" aria-label="MAX">
+    <img src="max-logo.png" alt="MAX" style="width:44px;height:44px;border-radius:50%;object-fit:cover;">
+  </a>
+  <a href="#" target="_blank" rel="noopener" class="social-btn social-vk" title="ВКонтакте" aria-label="ВКонтакте">
+    <svg viewBox="0 0 24 24"><path d="M13.16 16.27c-4.84-.16-7.65-3.4-7.77-8.89h2.43c.08 3.83 1.76 5.45 3.09 5.78V7.38h2.28v3.5c1.32-.14 2.7-1.64 3.17-3.5h2.28c-.36 2.26-1.86 3.76-2.93 4.38 1.07.5 2.77 1.82 3.44 4.51h-2.51c-.52-1.63-1.82-2.89-3.45-3.05v3.05h-.03z"/></svg>
+  </a>
+  <a href="tel:+79388087266" class="social-btn" title="Позвонить" aria-label="Позвонить" style="background:var(--accent); box-shadow:0 3px 14px rgba(255,107,26,.5);">
     <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.12 2.2 2 2 0 012.11 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
   </a>
 </div>
 
 <!-- CHAT WIDGET -->
 <button class="chat-bubble" id="chatBubble" onclick="toggleChat()">
-  <svg class="chat-icon-svg" viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+  <svg class="chat-icon-svg" viewBox="0 0 24 24">
+    <rect x="3" y="3" width="18" height="18" rx="3" fill="none" stroke="#14110e" stroke-width="2"/>
+    <text x="12" y="16.5" text-anchor="middle" font-family="Arial Black,Impact,sans-serif" font-size="9.5" font-weight="900" letter-spacing="-.5" fill="#14110e">ПС</text>
+  </svg>
   <svg class="chat-close" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18" stroke="#14110e" stroke-width="2.5" stroke-linecap="round"/><line x1="6" y1="6" x2="18" y2="18" stroke="#14110e" stroke-width="2.5" stroke-linecap="round"/></svg>
 </button>
 <div class="chat-panel" id="chatPanel">
